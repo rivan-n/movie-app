@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Image, FlatList, TextStyle, View, ViewStyle, ImageStyle } from "react-native"
+import { Image, FlatList, TextStyle, View, ViewStyle, ImageStyle, TouchableOpacity } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Header, Screen, Text, Wallpaper } from "../../components"
@@ -44,6 +44,7 @@ const FLAT_LIST: ViewStyle = {
 export const DemoListScreen = observer(function DemoListScreen() {
   const navigation = useNavigation()
   const goBack = () => navigation.goBack()
+  const nextScreen = () => navigation.navigate("details")
 
   const { characterStore } = useStores()
   const { characters } = characterStore
@@ -72,12 +73,12 @@ export const DemoListScreen = observer(function DemoListScreen() {
           data={[...characters]}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <View style={LIST_CONTAINER}>
+            <TouchableOpacity style={LIST_CONTAINER} onPress={nextScreen}>
               <Image source={{ uri: item.image }} style={IMAGE} />
               <Text style={LIST_TEXT}>
                 {item.name} ({item.status})
               </Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </Screen>

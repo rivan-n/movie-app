@@ -5,8 +5,25 @@
  * You'll likely spend most of your time in this file.
  */
 import React from "react"
+import { ViewStyle } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack"
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BlurView } from "@react-native-community/blur";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
+import { translate } from "../i18n";
+import { color } from "../theme";
+
+const BLUR_VIEW: ViewStyle = {
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  bottom: 0
+}
+
+const TAB_BAR: ViewStyle = {
+  backgroundColor: "transparent",
+}
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -20,10 +37,64 @@ import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
  *   https://reactnavigation.org/docs/params/
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
+
+export type CategoriesParamList = {
+  categories: undefined
+  list: undefined
+}
+
+const CategoriesStack = createStackNavigator<CategoriesParamList>()
+
+function CategoriesNavigator() {
+  return (
+    <CategoriesStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <CategoriesStack.Screen name="categories" component={WelcomeScreen} />
+      <CategoriesStack.Screen name="list" component={DemoListScreen} />
+    </CategoriesStack.Navigator>
+  )
+}
+
+export type HomeParamList = {
+  movies: undefined
+  watchList: undefined
+}
+
+const HomeTab = createBottomTabNavigator<HomeParamList>()
+
+function MyTab(props) {
+  return (
+    <BlurView
+      style={BLUR_VIEW}
+      blurType="dark"
+      overlayColor=""
+    >
+      <BottomTabBar {...props} />
+    </BlurView>
+  )
+}
+
+function HomeNavigator() {
+  return (
+    <HomeTab.Navigator
+      tabBarOptions={{
+        style: TAB_BAR,
+        activeTintColor: color.text
+      }}
+      tabBar={props => <MyTab {...props} />}
+    >
+      <HomeTab.Screen name="movies" component={CategoriesNavigator} options={{ tabBarLabel: translate("homeScreen.moviesTab"), tabBarIcon: (props) => (<MaterialIcons name="local-movies" color={props.color} size={props.size} />) }} />
+      <HomeTab.Screen name="watchList" component={DemoListScreen} options={{ tabBarLabel: translate("homeScreen.watchListTab"), tabBarIcon: (props) => (<MaterialIcons name="playlist-play" color={props.color} size={props.size} />) }} />
+    </HomeTab.Navigator>
+  )
+}
+
 export type PrimaryParamList = {
-  welcome: undefined
-  demo: undefined
-  demoList: undefined
+  home: undefined
+  details: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -36,9 +107,8 @@ export function MainNavigator() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      <Stack.Screen name="demo" component={DemoScreen} />
-      <Stack.Screen name="demoList" component={DemoListScreen} />
+      <Stack.Screen name="home" component={HomeNavigator} />
+      <Stack.Screen name="details" component={DemoScreen} />
     </Stack.Navigator>
   )
 }
@@ -52,5 +122,5 @@ export function MainNavigator() {
  *
  * `canExit` is used in ./app/app.tsx in the `useBackButtonHandler` hook.
  */
-const exitRoutes = ["welcome"]
+const exitRoutes = ["home"]
 export const canExit = (routeName: string) => exitRoutes.includes(routeName)

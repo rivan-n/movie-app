@@ -27,6 +27,10 @@
   "demoListScreen": {
     "title": "Demo List"
   },
+  "homeScreen": {
+    "moviesTab": "Movies",
+    "watchListTab": "Watch List"
+  },
   "storybook": {
     "placeholder": "Placeholder",
     "field": "Field"
