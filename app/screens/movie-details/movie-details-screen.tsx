@@ -12,7 +12,7 @@ export const MovieDetailsScreen = observer(function MovieDetailsScreen() {
     const goBack = () => navigation.goBack()
 
     return (
-        <Screen>
+        <Screen style={styles.screen}>
             <Wallpaper />
             <Header headerTx={'movieDetailsScreen.title'} leftIcon="back" onLeftPress={goBack} />
             <View style={styles.container}>
