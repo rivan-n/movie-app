@@ -31,6 +31,18 @@
     "moviesTab": "Movies",
     "watchListTab": "Watch List"
   },
+  "categoriesScreen": {
+    "title": "Categories"
+  },
+  "moviesScreen": {
+    "title": "Movies"
+  },
+  "watchListScreen": {
+    "title": "Watch List"
+  },
+  "movieDetailsScreen": {
+    "title": "Movie Details"
+  },
   "storybook": {
     "placeholder": "Placeholder",
     "field": "Field"

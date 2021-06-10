@@ -10,7 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BlurView } from "@react-native-community/blur";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
+import { MovieDetailsScreen, WatchListScreen, CategoriesScreen, MoviesScreen } from "../screens"
 import { translate } from "../i18n";
 import { color } from "../theme";
 
@@ -52,8 +52,8 @@ function CategoriesNavigator() {
         headerShown: false,
       }}
     >
-      <CategoriesStack.Screen name="categories" component={WelcomeScreen} />
-      <CategoriesStack.Screen name="list" component={DemoListScreen} />
+      <CategoriesStack.Screen name="categories" component={CategoriesScreen} />
+      <CategoriesStack.Screen name="list" component={MoviesScreen} />
     </CategoriesStack.Navigator>
   )
 }
@@ -87,7 +87,7 @@ function HomeNavigator() {
       tabBar={props => <MyTab {...props} />}
     >
       <HomeTab.Screen name="movies" component={CategoriesNavigator} options={{ tabBarLabel: translate("homeScreen.moviesTab"), tabBarIcon: (props) => (<MaterialIcons name="local-movies" color={props.color} size={props.size} />) }} />
-      <HomeTab.Screen name="watchList" component={DemoListScreen} options={{ tabBarLabel: translate("homeScreen.watchListTab"), tabBarIcon: (props) => (<MaterialIcons name="playlist-play" color={props.color} size={props.size} />) }} />
+      <HomeTab.Screen name="watchList" component={WatchListScreen} options={{ tabBarLabel: translate("homeScreen.watchListTab"), tabBarIcon: (props) => (<MaterialIcons name="playlist-play" color={props.color} size={props.size} />) }} />
     </HomeTab.Navigator>
   )
 }
@@ -108,7 +108,7 @@ export function MainNavigator() {
       }}
     >
       <Stack.Screen name="home" component={HomeNavigator} />
-      <Stack.Screen name="details" component={DemoScreen} />
+      <Stack.Screen name="details" component={MovieDetailsScreen} />
     </Stack.Navigator>
   )
 }
