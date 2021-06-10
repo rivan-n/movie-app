@@ -5,15 +5,15 @@ import { color, spacing } from "../../theme"
  * All text will start off looking like this.
  */
 const BASE_VIEW: ViewStyle = {
-  paddingVertical: spacing[2],
-  paddingHorizontal: spacing[2],
+  paddingVertical: spacing[4],
+  paddingHorizontal: spacing[4],
   borderRadius: 4,
   justifyContent: "center",
   alignItems: "center",
 }
 
 const BASE_TEXT: TextStyle = {
-  paddingHorizontal: spacing[3],
+  paddingHorizontal: spacing[3]
 }
 
 /**
@@ -39,7 +39,7 @@ export const viewPresets: Record<string, ViewStyle> = {
 }
 
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
-  primary: { ...BASE_TEXT, fontSize: 9, color: color.palette.white } as TextStyle,
+  primary: { ...BASE_TEXT, fontSize: 13, letterSpacing: 2, color: color.text } as TextStyle,
   link: {
     ...BASE_TEXT,
     color: color.text,
