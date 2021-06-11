@@ -77,7 +77,7 @@ export const CategoriesScreen = observer(function CategoriesScreen() {
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => { nextScreen(item) }}>
                         <FastImage
-                            style={{ width: 185, height: 278 }}
+                            style={{ width: 185, height: 278, margin: spacing[4] }}
                             resizeMode="contain"
                             source={{ uri: `${imageBaseUrl}${item.poster_path}` }}
                         />
