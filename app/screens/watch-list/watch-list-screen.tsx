@@ -12,7 +12,7 @@ export const WatchListScreen = observer(function WatchListScreen() {
     const navigation = useNavigation()
     const tabBarHeight = useBottomTabBarHeight()
 
-    const nextScreen = () => navigation.navigate("details")
+    const nextScreen = () => navigation.navigate("details", {movie: {}})
 
     return (
         <Screen style={{ paddingBottom: tabBarHeight + spacing[4] }}>

@@ -14,6 +14,7 @@ export const MovieDetailsScreen = observer(function MovieDetailsScreen({ route }
 
     const goBack = () => navigation.goBack()
 
+    // TODO: Params should be optional
     const { movie } = route.params
 
     //TODO: Pull imageBaseUrl from configuration service
