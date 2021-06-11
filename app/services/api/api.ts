@@ -2,6 +2,7 @@ import { ApisauceInstance, create, ApiResponse } from "apisauce"
 import { getGeneralApiProblem } from "./api-problem"
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config"
 import * as Types from "./api.types"
+import i18n from "i18n-js"
 
 /**
  * Manages all requests to the API.
@@ -40,7 +41,11 @@ export class Api {
       timeout: this.config.timeout,
       headers: {
         Accept: "application/json",
-      },
+      }
+    })
+    this.apisauce.addRequestTransform(request => {
+      request.params['api_key'] = this.config.apiKey
+      request.params['language'] = i18n.locale
     })
   }
 
@@ -81,6 +86,28 @@ export class Api {
   async getUser(id: string): Promise<Types.GetUserResult> {
     // make the api call
     const response: ApiResponse<any> = await this.apisauce.get(`/users/${id}`)
+
+    // the typical ways to die when calling an api
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    // transform the data into the format we are expecting
+    try {
+      const resultUser: Types.User = {
+        id: response.data.id,
+        name: response.data.name,
+      }
+      return { kind: "ok", user: resultUser }
+    } catch {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async getConfiguration(): Promise<Types.GetUserResult> {
+    // make the api call
+    const response: ApiResponse<any> = await this.apisauce.get("/configuration")
 
     // the typical ways to die when calling an api
     if (!response.ok) {
