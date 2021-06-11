@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/infinitered/ignite.svg?style=svg)](https://circleci.com/gh/infinitered/ignite)
 
+![Simulator Screen Recording - iPhone 12 Pro - 2021-06-11 at 11 44 11](https://user-images.githubusercontent.com/2284025/121632147-a7005500-caaa-11eb-849e-318460effc4c.gif)
+
 ## The latest and greatest boilerplate for Infinite Red opinions
 
 This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way to test bleeding-edge changes to our React Native stack.
