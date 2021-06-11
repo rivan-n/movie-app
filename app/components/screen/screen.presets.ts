@@ -1,5 +1,5 @@
 import { ViewStyle } from "react-native"
-import { color, spacing } from "../../theme"
+import { color } from "../../theme"
 
 /**
  * All screen keyboard offsets.
@@ -31,8 +31,7 @@ export const presets = {
       justifyContent: "flex-start",
       alignItems: "stretch",
       height: "100%",
-      width: "100%",
-      paddingHorizontal: spacing[4]
+      width: "100%"
     } as ViewStyle,
   },
 
@@ -47,7 +46,7 @@ export const presets = {
       flex: 1,
       height: "100%",
     } as ViewStyle,
-    inner: { justifyContent: "flex-start", alignItems: "stretch", paddingHorizontal: spacing[4] } as ViewStyle,
+    inner: { justifyContent: "flex-start", alignItems: "stretch" } as ViewStyle,
   },
 }
 
