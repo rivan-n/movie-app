@@ -31,6 +31,12 @@
     "moviesTab": "Movies",
     "watchListTab": "Watch List"
   },
+  "categories": {
+    "topRatedMovies": "Top Rated Movies",
+    "upcomingMovies": "Upcoming Movies",
+    "nowPlayingMovies": "Now Playing Movies",
+    "popularMovies": "Popular Movies"
+  },
   "categoriesScreen": {
     "title": "Categories"
   },
@@ -41,7 +47,8 @@
     "title": "Watch List"
   },
   "movieDetailsScreen": {
-    "title": "Movie Details"
+    "title": "Movie Details",
+    "addToWatchList": "ADD TO WATCH LIST"
   },
   "storybook": {
     "placeholder": "Placeholder",
