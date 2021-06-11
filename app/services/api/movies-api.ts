@@ -10,12 +10,12 @@ export class MoviesApi {
     this.api = api
   }
 
-  async getNowPlaying(): Promise<GetMoviesResult> {
+  async getNowPlaying(page = "1"): Promise<GetMoviesResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.api.apisauce.get(
         "/movie/now_playing",
-        { page: "1" },
+        { page },
       )
 
       // the typical ways to die when calling an api
@@ -33,12 +33,12 @@ export class MoviesApi {
     }
   }
   
-  async getPopular(): Promise<GetMoviesResult> {
+  async getPopular(page = "1"): Promise<GetMoviesResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.api.apisauce.get(
         "/movie/popular",
-        { page: "1" },
+        { page },
       )
 
       // the typical ways to die when calling an api
@@ -56,12 +56,12 @@ export class MoviesApi {
     }
   }
 
-  async getTopRated(): Promise<GetMoviesResult> {
+  async getTopRated(page = "1"): Promise<GetMoviesResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.api.apisauce.get(
         "/movie/top_rated",
-        { page: "1" },
+        { page },
       )
 
       // the typical ways to die when calling an api
@@ -79,12 +79,12 @@ export class MoviesApi {
     }
   }
 
-  async getUpcoming(): Promise<GetMoviesResult> {
+  async getUpcoming(page = "1"): Promise<GetMoviesResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.api.apisauce.get(
         "/movie/upcoming",
-        { page: "1" },
+        { page },
       )
 
       // the typical ways to die when calling an api
